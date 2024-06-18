@@ -19,7 +19,9 @@ export const ImageStyled = styled.img`
   height: 400px;
 `;
 
-export const ErrorMessage = styled.p``;
+export const ErrorMessage = styled.p`
+  color: red;
+`;
 
 export const FormStyled = styled(Form)`
   width: 80%;
