@@ -40,7 +40,6 @@ const PollPage = () => {
   }, [dispatch]);
 
   const saveQuestionByAnswer = (type) => {
-    console.log("type", type, 'user?.id', user?.id, 'questionById?.id',questionById?.id);
     const payload = {
       authedUser: user?.id,
       questionId: questionById?.id,
