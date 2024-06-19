@@ -8,8 +8,9 @@ import {
   UserInfoContainerStyled,
 } from "./MainLayout.styled";
 import { PATH_NAME } from "../../constants/pathName";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { EMPTY_STRING } from "../../constants/common";
+import { authActions } from "../../features/auth/authSlice";
 
 const Routes = [
   {
@@ -27,10 +28,16 @@ const Routes = [
 ];
 
 const MainLayout = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const route = useLocation();
 
   const { user } = useSelector((state) => state.auth);
+
+  const handleLogout = () => {
+    dispatch(authActions.handleLogout());
+    navigate(PATH_NAME.LOGIN, { replace: true });
+  };
 
   return (
     <MainLayoutContainerStyled>
@@ -41,15 +48,10 @@ const MainLayout = () => {
               <AvatarStyled
                 src={user?.avatarURL ?? ""}
                 alt={user?.name || EMPTY_STRING}
-              />{" "}
+              />
               {user?.name || EMPTY_STRING}
             </UserInfoContainerStyled>
-            <LogoutButtonStyled
-              onClick={
-                () => console.log("Signout")
-                // auth.signout(() => navigate("/login", { replace: true }))
-              }
-            >
+            <LogoutButtonStyled onClick={handleLogout}>
               Logout
             </LogoutButtonStyled>
           </ExtraContentRightContainerStyled>

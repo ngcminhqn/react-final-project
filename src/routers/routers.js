@@ -7,6 +7,7 @@ import LeaderBoardPage from "../pages/LeaderBoardPage/LeaderBoardPage";
 import PollPage from "../pages/PollPage/PollPage";
 import MainLayout from "../pages/MainLayout/MainLayout";
 import { useSelector } from "react-redux";
+import CreatePollPage from "../pages/CreatePollPage/CreatePollPage";
 
 const PrivateRoute = ({ children }) => {
   const { user } = useSelector((state) => state.auth);
@@ -31,10 +32,10 @@ export const router = createBrowserRouter([
         path: "/leader-board",
         element: <LeaderBoardPage />,
       },
-      // {
-      //   path: 'create-poll',
-      //   element: <New />,
-      // },
+      {
+        path: "create-poll",
+        element: <CreatePollPage />,
+      },
       {
         path: "poll/:questionId",
         element: <PollPage />,
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
   {
     path: PATH_NAME.POLL,
     element: <PollPage />,
+  },
+  {
+    path: PATH_NAME.CREATE_POLL,
+    element: <CreatePollPage />,
   },
   {
     path: PATH_NAME.LOGIN,

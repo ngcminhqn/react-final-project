@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const MainLayoutContainerStyled = styled.div`
+  padding-top: 20px;
   .ant-tabs-tab {
     padding: 10px;
     font-size: 16px;

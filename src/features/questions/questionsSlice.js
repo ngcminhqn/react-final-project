@@ -45,6 +45,16 @@ const questionsSlice = createSlice({
     handleSaveQuestionByAnswerFailure(state) {
       state.loading = false;
     },
+    // save new question
+    handleSaveNewQuestion(state, _action) {
+      state.loading = true;
+    },
+    handleSaveNewQuestionSuccess(state) {
+      state.loading = false;
+    },
+    handleSaveNewQuestionFailure(state) {
+      state.loading = false;
+    },
     // reset error message
     resetErrorMessage(state) {
       state.errorMessage = initialState.errorMessage;

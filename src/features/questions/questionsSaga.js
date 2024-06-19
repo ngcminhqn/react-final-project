@@ -1,5 +1,9 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { _getQuestions, _saveQuestionAnswer } from "../../utils/_DATA";
+import {
+  _getQuestions,
+  _saveQuestion,
+  _saveQuestionAnswer,
+} from "../../utils/_DATA";
 import { questionsActions } from "./questionsSlice";
 
 export function* handleGetQuestions(action) {
@@ -46,7 +50,6 @@ export function* handleGetQuestionById(action) {
 
 export function* handleSaveQuestionByAnswer(action) {
   const { authedUser, questionId, answer } = action.payload.data;
-  console.log({ authedUser }, { questionId }, { answer });
   try {
     const response = yield call(_saveQuestionAnswer, {
       authedUser: authedUser,
@@ -69,6 +72,26 @@ export function* handleSaveQuestionByAnswer(action) {
   }
 }
 
+export function* handleSaveNewQuestion(action) {
+  const { author, firstOption, secondOption } = action.payload.data;
+  try {
+    const response = yield call(_saveQuestion, {
+      author: author,
+      optionOneText: firstOption,
+      optionTwoText: secondOption,
+    });
+
+    if (response) {
+      action?.payload?.onSuccess?.();
+      yield put(questionsActions.handleSaveNewQuestionSuccess());
+      return;
+    }
+  } catch (error) {
+    action?.payload?.onError?.(error);
+    yield put(questionsActions.handleSaveNewQuestionFailure());
+  }
+}
+
 export const questionsWatcher = [
   takeLatest(questionsActions.handleGetQuestions, handleGetQuestions),
   takeLatest(questionsActions.handleGetQuestionById, handleGetQuestionById),
@@ -76,4 +99,5 @@ export const questionsWatcher = [
     questionsActions.handleSaveQuestionByAnswer,
     handleSaveQuestionByAnswer
   ),
+  takeLatest(questionsActions.handleSaveNewQuestion, handleSaveNewQuestion),
 ];

@@ -20,7 +20,6 @@ const HomePage = () => {
   }, [dispatch]);
 
   const handlePressQuestionItem = (questionId) => {
-    console.log("handlePressQuestionItem", questionId);
     navigate(PATH_NAME.POLL.replace(":questionId", questionId));
   };
 

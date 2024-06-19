@@ -22,6 +22,9 @@ const authSlice = createSlice({
       state.user = initialState.user;
       state.errorMessage = action.payload.errorMessage;
     },
+    handleLogout(state) {
+      state.user = initialState.user;
+    },
     resetErrorMessage(state) {
       state.errorMessage = initialState.errorMessage;
     },
