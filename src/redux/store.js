@@ -13,5 +13,11 @@ export const store = configureStore({
   ],
 });
 
-sagaMiddleware.run(rootSaga);
+export function setupStore(preloadedState) {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  });
+}
 
+sagaMiddleware.run(rootSaga);

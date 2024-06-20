@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import Loading from "../../components/Loading";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { CardStyled, HomeContainerStyled } from "./HomePage.styled";
 import { Col, Row } from "antd";
 import { useDispatch, useSelector } from "react-redux";

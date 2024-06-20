@@ -7,9 +7,7 @@ import Loading from "./components/Loading";
 const App = () => {
   return (
     <Provider store={store}>
-      {/* <AuthProvider> */}
-      <RouterProvider router={router} fallbackElement={<Loading />} />
-      {/* </AuthProvider> */}
+      <RouterProvider router={router} fallbackElement={< ></>} />
     </Provider>
   );
 };
