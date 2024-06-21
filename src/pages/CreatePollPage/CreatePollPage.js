@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Loading from "../../components/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { usersActions } from "../../features/users/usersSlice";
 import { Button, Form, Input, notification } from "antd";
@@ -11,13 +10,18 @@ import {
   SubTitleStyled,
   TitleStyled,
 } from "./CreatePollPage.styled";
+import { getUser } from "../../helpers/user";
+import Loading from "../../components/Loading/Loading";
+import { useNavigate } from "react-router-dom";
+import { PATH_NAME } from "../../constants/pathName";
 
 const CreatePollPage = () => {
   const dispatch = useDispatch();
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
   const { loading } = useSelector((state) => state.questions);
-  const { user } = useSelector((state) => state.auth);
+  const user = getUser();
 
   const openNotification = () => {
     notification.open({
@@ -42,6 +46,7 @@ const CreatePollPage = () => {
         onSuccess: () => {
           form.resetFields();
           openNotification();
+          navigate(PATH_NAME.HOME);
         },
       })
     );
@@ -50,7 +55,6 @@ const CreatePollPage = () => {
   return (
     <CreatePollContainerStyled>
       <Loading isLoading={loading} />
-
       <TitleStyled>Would You Rather</TitleStyled>
       <SubTitleStyled>Create Your Own Poll</SubTitleStyled>
       <FormStyled

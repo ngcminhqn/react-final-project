@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Loading from "../../components/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { usersActions } from "../../features/users/usersSlice";
 import {
@@ -13,13 +12,15 @@ import { Card, Col, Row } from "antd";
 import { useParams } from "react-router-dom";
 import { questionsActions } from "../../features/questions/questionsSlice";
 import { EMPTY_STRING } from "../../constants/common";
+import { getUser } from "../../helpers/user";
+import Loading from "../../components/Loading/Loading";
 
 const PollPage = () => {
   const dispatch = useDispatch();
   const { questionId } = useParams();
 
   const { loading, questionById } = useSelector((state) => state.questions);
-  const { user } = useSelector((state) => state.auth);
+  const user = getUser();
   const { users } = useSelector((state) => state.users);
 
   useEffect(() => {
@@ -57,7 +58,6 @@ const PollPage = () => {
   return (
     <PollContainerStyled>
       <Loading isLoading={loading} />
-
       <TitleStyled>Poll by {questionById?.author}</TitleStyled>
       {questionById && users[questionById.author] ? (
         <AvatarStyled

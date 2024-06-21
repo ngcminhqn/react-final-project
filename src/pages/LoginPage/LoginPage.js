@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { PATH_NAME } from "../../constants/pathName";
-import Loading from "../../components/Loading";
+import Loading from "../../components/Loading/Loading";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -54,14 +54,14 @@ const LoginPage = () => {
         <Form.Item
           name="username"
           rules={[{ required: true, message: "Please enter your User!" }]}
-          initialValue={"sarahedo"}
+          // initialValue={"sarahedo"}
         >
           <Input placeholder="User" />
         </Form.Item>
         <Form.Item
           name="password"
           rules={[{ required: true, message: "Please enter your Password!" }]}
-          initialValue={"password123"}
+          // initialValue={"password123"}
         >
           <Input type="password" placeholder="Password" />
         </Form.Item>

@@ -1,6 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { authActions } from "./authSlice";
 import { _getUsers } from "../../utils/_DATA";
+import { setUser } from "../../helpers/user";
 
 export function* handleLogin(action) {
   const { username, password } = action.payload.data;
@@ -16,7 +17,8 @@ export function* handleLogin(action) {
           })
         );
       } else {
-        action.payload?.onSuccess?.();
+        action.payload?.onSuccess?.({ user: users[username] });
+        setUser(users[username]);
         yield put(authActions.handleLoginSuccess({ user: users[username] }));
       }
     } else {

@@ -1,4 +1,3 @@
-import Loading from "../../components/Loading";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { CardStyled, HomeContainerStyled } from "./HomePage.styled";
@@ -6,21 +5,22 @@ import { Col, Row } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { homeActions } from "../../features/home/homeSlice";
 import QuestionItem from "./components/QuestionItem/QuestionItem";
-import { PATH_NAME } from "../../constants/pathName";
+import { getUser } from "../../helpers/user";
+import Loading from "../../components/Loading/Loading";
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { loading, questions } = useSelector((state) => state.home);
-  const { user } = useSelector((state) => state.auth);
+  const user = getUser();
 
   useEffect(() => {
     dispatch(homeActions.handleGetQuestions());
   }, [dispatch]);
 
   const handlePressQuestionItem = (questionId) => {
-    navigate(PATH_NAME.POLL.replace(":questionId", questionId));
+    navigate(`/questions/${questionId}`);
   };
 
   return (

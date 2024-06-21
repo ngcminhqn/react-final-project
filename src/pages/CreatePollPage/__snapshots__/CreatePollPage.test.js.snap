@@ -1,28 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login render login 1`] = `
+exports[`CreatePollPage render CreatePollPage 1`] = `
 <div>
   <div
-    class="sc-aYaIB cSpayn"
+    class="sc-aYaIB fseERr"
   >
-    <h1
-      class="sc-gEvDqW"
+    <p
+      class="sc-gEvDqW enkQJm"
     >
-      Employee Polls
-    </h1>
-    <img
-      alt="logo"
-      class="sc-fqkwJk fjIODc"
-      src="login-logo.png"
-    />
-    <h2
-      class="sc-eqUzNf"
+      Would You Rather
+    </p>
+    <p
+      class="sc-eqUzNf fgdwwx"
     >
-      Login
-    </h2>
+      Create Your Own Poll
+    </p>
     <form
-      class="ant-form ant-form-horizontal css-dev-only-do-not-override-m4timi sc-iGgVNO hRBvRq"
-      id="login_employee_form"
+      class="ant-form ant-form-vertical css-dev-only-do-not-override-m4timi sc-fqkwJk buqAUq"
+      id="create_poll_form"
     >
       <div
         class="ant-form-item css-dev-only-do-not-override-m4timi"
@@ -30,6 +25,17 @@ exports[`Login render login 1`] = `
         <div
           class="ant-row ant-form-item-row css-dev-only-do-not-override-m4timi"
         >
+          <div
+            class="ant-col ant-form-item-label css-dev-only-do-not-override-m4timi"
+          >
+            <label
+              class="ant-form-item-required"
+              for="create_poll_form_firstOption"
+              title="First Option"
+            >
+              First Option
+            </label>
+          </div>
           <div
             class="ant-col ant-form-item-control css-dev-only-do-not-override-m4timi"
           >
@@ -42,8 +48,8 @@ exports[`Login render login 1`] = `
                 <input
                   aria-required="true"
                   class="ant-input css-dev-only-do-not-override-m4timi ant-input-outlined"
-                  id="login_employee_form_username"
-                  placeholder="User"
+                  id="create_poll_form_firstOption"
+                  placeholder="Option One"
                   type="text"
                   value=""
                 />
@@ -59,6 +65,17 @@ exports[`Login render login 1`] = `
           class="ant-row ant-form-item-row css-dev-only-do-not-override-m4timi"
         >
           <div
+            class="ant-col ant-form-item-label css-dev-only-do-not-override-m4timi"
+          >
+            <label
+              class="ant-form-item-required"
+              for="create_poll_form_secondOption"
+              title="Second Option"
+            >
+              Second Option
+            </label>
+          </div>
+          <div
             class="ant-col ant-form-item-control css-dev-only-do-not-override-m4timi"
           >
             <div
@@ -70,9 +87,9 @@ exports[`Login render login 1`] = `
                 <input
                   aria-required="true"
                   class="ant-input css-dev-only-do-not-override-m4timi ant-input-outlined"
-                  id="login_employee_form_password"
-                  placeholder="Password"
-                  type="password"
+                  id="create_poll_form_secondOption"
+                  placeholder="Option Two"
+                  type="text"
                   value=""
                 />
               </div>

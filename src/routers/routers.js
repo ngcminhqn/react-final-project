@@ -6,13 +6,13 @@ import { PATH_NAME } from "../constants/pathName";
 import LeaderBoardPage from "../pages/LeaderBoardPage/LeaderBoardPage";
 import PollPage from "../pages/PollPage/PollPage";
 import MainLayout from "../pages/MainLayout/MainLayout";
-import { useSelector } from "react-redux";
 import CreatePollPage from "../pages/CreatePollPage/CreatePollPage";
+import { getUser } from "../helpers/user";
 
 const PrivateRoute = ({ children }) => {
-  const { user } = useSelector((state) => state.auth);
+  const userLocalStorage = getUser();
 
-  if (!user) {
+  if (!userLocalStorage) {
     return <Navigate to={PATH_NAME.LOGIN} replace />;
   }
   return children;
@@ -29,26 +29,18 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: "/leader-board",
+        path: "leaderboard",
         element: <LeaderBoardPage />,
       },
       {
-        path: "create-poll",
+        path: "add",
         element: <CreatePollPage />,
       },
       {
-        path: "poll/:questionId",
+        path: "questions/:questionId",
         element: <PollPage />,
       },
     ],
-  },
-  {
-    path: PATH_NAME.LEADER_BOARD,
-    element: <LeaderBoardPage />,
-  },
-  {
-    path: PATH_NAME.POLL,
-    element: <PollPage />,
   },
   {
     path: PATH_NAME.CREATE_POLL,
